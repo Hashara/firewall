@@ -88,6 +88,11 @@ class Check:
                 if i["source"] == src or i["source"] == target:
                     if i["target"] != "ACCEPT":
                         return "REJECT"
+                    elif i["dpt"] == ("dpt:" + str(src_port)) or i["dpt"] == ("dpt:" + str(dest_port)):
+                        if i["target"] != "ACCEPT":
+                            return "REJECT"
+                        else:
+                            return "ACCEPT"
                     else:
                         return "ACCEPT"
 
